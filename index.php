@@ -6,11 +6,11 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 $url_parts = parse_url($url);
 
-$livros = $livros = array(
+$livros = array(
         array('id' => 1, 'nome' => 'Guia dos mochileiros', 'content' => 'Obrigado pelos peixes.'),
         array('id' => 2, 'nome' => 'Harry Potter', 'content' => 'Avada Kedabra'),
         array('id' => 3, 'nome' => 'Pai Rico, Pai Pobre', 'content' => 'O segundo pai.')
-    );;
+    );
 
 if ($method == 'GET' ) {
     if($url_parts['path'] == '/api/livros/trecho' || $url_parts['path'] == '/api/livros/trecho'){
@@ -33,6 +33,7 @@ if ($method == 'GET' ) {
         array_push($livros, $livro);
         header('Content-Type: application/json');
         echo json_encode($livro);
+        return $livros;
     }
 }else {
     // Rota não encontrada
